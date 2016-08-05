@@ -1,8 +1,8 @@
 {
   "name": "vue-pandora",
-  "version": "1.0.0",
-  "description": "vuejs pandora ui",
-  "author": "林志忠 <zhizhonglin@cyou-inc.com>",
+  "version": "0.1.0",
+  "description": "vue pandora ui, base on bulma",
+  "author": "lynzz <lynzz168@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
