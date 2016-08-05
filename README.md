@@ -1,6 +1,6 @@
 # vue-pandora
 
-> vuejs pandora ui
+> vue pandora ui, base on [bulma](http://bulma.io), **still in development**
 
 ## Build Setup
 
