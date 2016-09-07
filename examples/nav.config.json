@@ -1,0 +1,53 @@
+[
+  {
+    "name": "基础组件",
+    "groups": [{
+      "groupName": "Basic",
+      "list": [
+        {
+          "path": "/button",
+          "name": "button",
+          "title": "按钮",
+          "description": ""
+        },
+        {
+          "path": "/layout",
+          "name": "layout",
+          "title": "布局",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "groupName": "Form",
+      "list": [
+        {
+          "path": "/radio",
+          "name": "radio",
+          "title": "单选框",
+          "description": "用于在多个备选项选中单个选项。"
+        },
+        {
+          "path": "/checkbox",
+          "name": "checkbox",
+          "title": "多选框",
+          "description": "用于在多个可选项中进行多项选择。"
+        },
+        {
+          "path": "/form",
+          "name": "form",
+          "title": "表单",
+          "description": "一个多功能的并带有字段验证的表单组件"
+        }
+      ]
+    }]
+  },
+  {
+    "name": "安装指南",
+    "children": [{
+      "path": "/getting-started",
+      "name": "getting-started",
+      "title": "快速上手"
+    }]
+  }
+]

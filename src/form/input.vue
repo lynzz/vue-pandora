@@ -1,6 +1,8 @@
 <template>
-  <input v-if="isInput" class="input" :type="type" :value="value" :placeholder="placeholder" />
-  <textarea v-else class="textarea" :placeholder="placeholder">{{value}}</textarea>
+  <div>
+    <input v-if="isInput" class="input" :type="type" :value="value" :placeholder="placeholder" />
+    <textarea v-else class="textarea" :placeholder="placeholder">{{value}}</textarea>
+  </div>
 </template>
 
 <script>

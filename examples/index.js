@@ -1,18 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import navView from './nav'
 
-import routerMap from './router'
+import DemoBlock from './components/demo-block'
+import entry from './app'
+import routerConfig from './router-config'
 
 require('../src/index')
 
 Vue.use(VueRouter)
+Vue.component('nav-view', navView)
+Vue.component('demo-block', DemoBlock)
 
-var router = new VueRouter()
-
-router.map(routerMap)
-
-router.start(Vue.extend({
-  components: {
-    app: require('./app.vue')
-  }
-}), 'body')
+const router = new VueRouter({
+  mode: 'history',
+  base: __dirname,
+  routes: routerConfig
+})
+/*eslint no-new:0*/
+new Vue({
+  router,
+  render: h => h(entry)
+}).$mount('#app')

@@ -18,6 +18,17 @@
         </p-form-item>
       </p-form>
     </example>
+    <example title="表单验证">
+      <validator name="validation">
+        <form novalidate>
+          <p class="validate-field" v-for="field in fields">
+            <label>{{field.label}}</label>
+            <input class="input" type="text" :placeholder="field.placeholder" :field="field.name" v-validate="field.validate">
+          </p>
+          <pre>{{ $validation | json }}</pre>
+        </form>
+      </validator>
+    </example>
   </demo>
 </template>
 
@@ -25,6 +36,17 @@
   export default {
     data () {
       return {
+        fields: [{
+          name: 'username',
+          placeholder: '请填写姓名',
+          label: '姓名',
+          validate: {required: true, maxlength: 10}
+        }, {
+          name: 'address',
+          placeholder: '请填写地址',
+          label: '地址',
+          validate: {required: true, minlength: 4}
+        }],
         model: {
           username: ''
         },

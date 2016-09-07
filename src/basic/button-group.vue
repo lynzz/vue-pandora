@@ -1,9 +1,6 @@
 <template>
   <div class="control" :class="{'is-grouped': !hasAddons, 'has-addons': hasAddons}">
-    <template v-if="hasAddons">
-      <slot></slot>
-    </template>
-    <p v-else class="control">
+    <p :class="{control: hasAddons}">
       <slot></slot>
     </p>
   </div>

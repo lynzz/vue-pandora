@@ -2,53 +2,27 @@
   <aside class="aside-container">
     <ul>
       <li>
-        <a v-link="{path: '/docs/introduce'}" class="">
-          Vue Pandora
-          <span class="chinese"></span>
-        </a>
-      </li>
-      <li>
-        <a v-link="{path: '/docs/getting-started'}" class="">
-          快速上手
-          <span class="chinese"></span>
-        </a>
-      </li>
-      <li>
-        <a v-link="{path: '/docs/download'}" class="">
-          下载
-          <span class="chinese"></span>
-        </a>
-      </li>
-      <li>
-        <h4>Components</h4>
+        <h4>{{componentsData.name}}</h4>
         <ul>
-          <li class="type-divider">基础</li>
-          <li v-for="component in componentsMenu.basic">
-            <a v-link="{path: component.path}">
-              {{component.name | capitalize}}
-              <span class="chinese">{{component.desc}}</span>
-            </a>
-          </li>
-          <li class="type-divider">表单</li>
-          <li v-for="component in componentsMenu.form">
-            <a v-link="{path: component.path}">
-              {{component.name | capitalize}}
-              <span class="chinese">{{component.desc}}</span>
-            </a>
-          </li>
-          <li class="type-divider">展示</li>
-          <li v-for="component in componentsMenu.present">
-            <a v-link="{path: component.path}">
-              {{component.name | capitalize}}
-              <span class="chinese">{{component.desc}}</span>
-            </a>
-          </li>
-          <li class="type-divider">导航</li>
-          <li v-for="component in componentsMenu.nav">
-            <a v-link="{path: component.path}">
-              {{component.name | capitalize}}
-              <span class="chinese">{{component.desc}}</span>
-            </a>
+          <template v-for="subGroup of componentsData.groups">
+            <li class="type-divider">{{subGroup.groupName}}</li>
+            <li v-for="subNav in subGroup.list">
+              <router-link :to="subNav.path">
+                {{subNav.name | capitalize}}
+                <span class="chinese">{{subNav.title}}</span>
+              </router-link>
+            </li>
+          </template>
+        </ul>
+      </li>
+      <li>
+        <h4>{{installData.name}}</h4>
+        <ul>
+          <li v-for="item of installData.children">
+            <router-link :to="item.path">
+              {{item.name | capitalize}}
+              <span class="chinese">{{item.title}}</span>
+            </router-link>
           </li>
         </ul>
       </li>
@@ -57,43 +31,20 @@
 </template>
 
 <script>
+  import navConfig from './nav.config.json'
   export default {
+    name: 'nav',
     data () {
       return {
-        componentsMenu: {
-          basic: [{
-            path: '/button',
-            desc: '按钮',
-            name: 'button'
-          }, {
-            path: '/layout',
-            desc: '布局',
-            name: 'layout'
-          }],
-          form: [{
-            path: '/checkbox',
-            desc: '多选框',
-            name: 'checkbox'
-          }, {
-            path: '/radio',
-            desc: '单选框',
-            name: 'raido'
-          }, {
-            path: '/form',
-            desc: '表单',
-            name: 'form'
-          }],
-          present: [{
-            path: '/alert',
-            desc: '警告提示',
-            name: 'alert'
-          }],
-          nav: [{
-            path: '/breadcrumb',
-            desc: '面包屑',
-            name: 'breadcrumb'
-          }]
-        }
+        componentsData: navConfig[0],
+        installData: navConfig[1]
+      }
+    },
+    filters: {
+      capitalize (value) {
+        if (!value) return ''
+        value = value.toString()
+        return value.charAt(0).toUpperCase() + value.slice(1)
       }
     }
   }
