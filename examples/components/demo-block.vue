@@ -60,7 +60,6 @@
 
     .highlight {
       width: 60%;
-      border-right: solid 1px #eaeefb;
 
       pre {
         margin: 0;
