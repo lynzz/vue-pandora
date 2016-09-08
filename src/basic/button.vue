@@ -1,5 +1,6 @@
 <template>
   <button :type="htmlType" class="button" :class="[btnClasses]">
+    <i v-if="hasIcon" :class="[iconCls]"></i>
     <slot></slot>
   </button>
 </template>
@@ -14,6 +15,7 @@
         type: String,
         default: ''
       },
+      icon: String,
       size: {
         type: String,
         default: ''
@@ -57,11 +59,26 @@
           classes.push('is-disabled')
         }
 
-        if (this.loading) {
-          classes.push('is-loading')
-        }
-
         return classes.join(' ')
+      },
+
+      hasIcon () {
+        return this.loading || this.icon
+      },
+
+      iconCls () {
+        if (this.icon) {
+          return `fa fa-${this.icon}`
+        }
+        if (this.loading) {
+          return 'fa fa-circle-o-notch fa-spin'
+        }
+      },
+
+      iconSize () {
+        if (this.size) {
+          return `is-${this.size}`
+        }
       }
     },
 
@@ -77,3 +94,8 @@
     }
   }
 </script>
+<style media="screen">
+  .button .fa {
+    margin-right: 4px;
+  }
+</style>

@@ -1,18 +1,5 @@
 <template>
-  <div class="control" :class="{'is-grouped': !hasAddons, 'has-addons': hasAddons}">
-    <p :class="{control: hasAddons}">
-      <slot></slot>
-    </p>
+  <div class="control has-addons">
+    <slot></slot>
   </div>
 </template>
-
-<script>
-  export default {
-    props: {
-      hasAddons: {
-        type: Boolean,
-        default: true
-      }
-    }
-  }
-</script>

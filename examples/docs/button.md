@@ -75,11 +75,6 @@
 :::demo
 
 ```html
-<p-button-group :has-addons="false">
-  <p-button>左</p-button>
-  <p-button>中</p-button>
-  <p-button>右</p-button>
-</p-button-group>
 <p-button-group>
   <p-button>左</p-button>
   <p-button>中</p-button>
@@ -89,12 +84,35 @@
 
 :::
 
+### 带有图标的按钮
+
+图标用[Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+
+:::demo
+
+```html
+<p-button icon="user">用户</p-button>
+<p-button icon="lock" type="primary">锁定</p-button>
+<p-button icon="lock" type="primary" size="large">变大</p-button>
+<p-button icon="lock" type="primary" size="small">变小</p-button>
+```
+:::
+
+### 正加载的按钮
+
+:::demo
+```html
+<p-button :loading="true" :disabled="true" type="info">提交中...</p-button>
+```
+:::
+
 ### 属性
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| size     | 尺寸   | string  |   large,medium,small            |    —     |
+| size     | 尺寸   | string  |   large,medium,small            |    normal     |
 | type     | 类型   | string    |   primary,success,warning,danger,info,white,link,dark,black |     —    |
 | sharp     | 按钮形状   | string    | outlined,inverted | —   |
 | disabled  | 禁用    | boolean   | true, false   | false   |
 | icon  | 图标，已有的图标库中的图标名 | string   |  —  |  —  |
+| loading | 加载状态的按钮 | true,false | — | — |
 | html-type | 原生 type 属性 | string | button,submit,reset | button |
