@@ -1,0 +1,57 @@
+.radio
+  &-input
+    white-space: nowrap
+    cursor: pointer
+    outline: none
+    display: inline-block
+    line-height: 1
+    position: relative
+    vertical-align: middle
+  &-inner
+    border: 1px solid $grey
+    width: 18px
+    height: 18px
+    border-radius: 50%
+    position: relative
+    cursor: pointer
+    display: inline-block
+    box-sizing: border-box
+    &::after
+      width: 6px
+      height: 6px
+      border-radius: 50%
+      background-color: #fff
+      content: ""
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%) scale(0)
+      transition: transform .15s cubic-bezier(.71,-.46,.88,.6), -webkit-transform .15s cubic-bezier(.71,-.46,.88,.6)
+
+    &.is-disabled
+      background-color: $background
+      border-color: $control-border
+      cursor: not-allowed
+      &.is-checked
+        background-color: #D3DCE6
+        border-color: $control-border
+
+    &.is-checked
+      border-color: $primary
+      background-color: $primary
+      &::after
+        transform: translate(-50%, -50%) scale(1)
+
+  &-label
+    padding-left: 5px
+
+  &-original
+    opacity: 0
+    outline: none
+    position: absolute
+    z-index: -1
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin: 0
