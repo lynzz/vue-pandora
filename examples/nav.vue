@@ -2,6 +2,16 @@
   <aside class="aside-container">
     <ul>
       <li>
+        <h4>{{guideData.name}}</h4>
+        <ul>
+          <li v-for="item of guideData.children">
+            <router-link :to="item.path">
+              {{item.title}}
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
         <h4>{{componentsData.name}}</h4>
         <ul>
           <template v-for="subGroup of componentsData.groups">
@@ -15,17 +25,6 @@
           </template>
         </ul>
       </li>
-      <li>
-        <h4>{{installData.name}}</h4>
-        <ul>
-          <li v-for="item of installData.children">
-            <router-link :to="item.path">
-              {{item.name | capitalize}}
-              <span class="chinese">{{item.title}}</span>
-            </router-link>
-          </li>
-        </ul>
-      </li>
     </ul>
   </aside>
 </template>
@@ -37,7 +36,7 @@
     data () {
       return {
         componentsData: navConfig[0],
-        installData: navConfig[1]
+        guideData: navConfig[1]
       }
     },
     filters: {
