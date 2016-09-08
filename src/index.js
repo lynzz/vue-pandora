@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import 'bulma'
+
+import 'src/theme/bulma/bulma.sass'
 
 import Button from './basic/button'
 import ButtonGroup from './basic/button-group'
@@ -11,6 +12,8 @@ import FormItem from './form/form-item'
 import Field from './form/field'
 import Input from './form/input'
 import CheckboxGroup from './form/checkbox/checkbox-group'
+import Radio from './form/radio/radio'
+import RadioGroup from './form/radio/radio-group'
 
 import Notice from './view/notification'
 
@@ -25,6 +28,8 @@ export var Components = {
   Checkbox,
   Input,
   CheckboxGroup,
+  Radio,
+  RadioGroup,
   Notice
 }
 
