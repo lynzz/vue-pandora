@@ -4,6 +4,7 @@ import 'src/theme/bulma/bulma.sass'
 
 import Button from './basic/button'
 import ButtonGroup from './basic/button-group'
+import Icon from './basic/icon'
 import Row from './basic/row'
 import Col from './basic/col'
 import Checkbox from './form/checkbox/checkbox'
@@ -20,6 +21,7 @@ import Notice from './view/notification'
 export var Components = {
   Button,
   ButtonGroup,
+  Icon,
   Row,
   Col,
   Form,

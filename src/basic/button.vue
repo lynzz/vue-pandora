@@ -1,11 +1,13 @@
 <template>
   <button :type="htmlType" class="button" :class="[btnClasses]">
-    <i v-if="hasIcon" :class="[iconCls]"></i>
+    <p-icon v-if="hasIcon" :type="iconCls"></p-icon>
     <slot></slot>
   </button>
 </template>
 <script>
   export default {
+    name: 'pButton',
+    componentName: 'button',
     props: {
       htmlType: {
         type: String,
@@ -67,18 +69,7 @@
       },
 
       iconCls () {
-        if (this.icon) {
-          return `fa fa-${this.icon}`
-        }
-        if (this.loading) {
-          return 'fa fa-circle-o-notch fa-spin'
-        }
-      },
-
-      iconSize () {
-        if (this.size) {
-          return `is-${this.size}`
-        }
+        return this.loading ? 'loading' : this.icon
       }
     },
 
