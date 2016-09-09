@@ -6,6 +6,8 @@
 
 <script>
   export default {
+    name: 'pRow',
+    componentName: 'row',
     props: {
       type: String,
       multiline: {

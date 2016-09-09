@@ -6,6 +6,8 @@
 
 <script>
   export default {
+    name: 'pCol',
+    componentName: 'col',
     props: {
       size: String,
       offset: String
