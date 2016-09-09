@@ -9,9 +9,10 @@
     vertical-align: middle
   &-inner
     border: 1px solid $grey
-    width: 18px
-    height: 18px
-    border-radius: 50%
+    background-color: #fff
+    width: 14px
+    height: 14px
+    border-radius: 14px
     position: relative
     cursor: pointer
     display: inline-block
@@ -19,28 +20,38 @@
     &::after
       width: 6px
       height: 6px
-      border-radius: 50%
-      background-color: #fff
+      border-radius: 6px
+      background-color: $primary
       content: ""
       position: absolute
-      left: 50%
-      top: 50%
-      transform: translate(-50%, -50%) scale(0)
-      transition: transform .15s cubic-bezier(.71,-.46,.88,.6), -webkit-transform .15s cubic-bezier(.71,-.46,.88,.6)
+      left: 3px
+      top: 3px
+      border-top: 0
+      border-left: 0
+      opacity: 0
+      display: table
+      transform: scale(0)
+      transition: all .2s cubic-bezier(.78,.14,.15,.86)
+    &.is-focus,
+    &:not(.is-disabled):hover
+      border-color: $primary
 
     &.is-disabled
-      background-color: $background
-      border-color: $control-border
+      background-color: #f3f3f3
+      border-color: #d9d9d9
       cursor: not-allowed
+      &::after
+        background-color: #ccc
       &.is-checked
-        background-color: #D3DCE6
-        border-color: $control-border
+        &::after
+          background-color: #ccc
 
     &.is-checked
-      border-color: $primary
-      background-color: $primary
       &::after
-        transform: translate(-50%, -50%) scale(1)
+        background-color: $primary
+        opacity: 1
+        transform: scale(1)
+        transition: all .2s cubic-bezier(.78,.14,.15,.86)
 
   &-label
     padding-left: 5px

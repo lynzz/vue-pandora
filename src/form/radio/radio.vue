@@ -1,10 +1,10 @@
 <template>
-  <label class="radio">
+  <label class="radio" :class="{'is-disabled': disabled}">
     <span class="radio-input">
       <span
         class="radio-inner"
         :class="{
-          'is-checked': _value === label,
+          'is-checked': _value === val,
           'is-focus': focus,
           'is-disabled': disabled
         }">
@@ -12,7 +12,7 @@
       <input
         type="radio"
         class="radio-original"
-        :value="label"
+        :value="val"
         v-model="_value"
         :disabled="disabled"
         @focus="focus = true"
@@ -30,6 +30,10 @@
   export default {
     props: {
       value: [String, Number],
+      val: {
+        type: [String, Number],
+        required: true
+      },
       label: {
         type: [String, Number],
         required: true

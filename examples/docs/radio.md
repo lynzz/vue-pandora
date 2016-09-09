@@ -18,8 +18,8 @@
 :::demo
 
 ```html
-<p-radio label="单选 A" v-model="radio"></p-radio>
-<p-radio label="单选 B" v-model="radio"></p-radio>
+<p-radio val="a" label="单选 A" v-model="radio"></p-radio>
+<p-radio val="b" label="单选 B" v-model="radio"></p-radio>
 <p>
   {{radio}}
 </p>
@@ -40,9 +40,9 @@
 :::demo
 ```html
 <p-radio-group v-model="radio1">
-  <p-radio label="100"></p-radio>
-  <p-radio label="50"></p-radio>
-  <p-radio label="1"></p-radio>
+  <p-radio val="100" label="100"></p-radio>
+  <p-radio val="50" label="50"></p-radio>
+  <p-radio val="1" label="1"></p-radio>
 </p-radio-group>
 <script>
   module.exports = {
@@ -61,9 +61,9 @@
 :::demo
 ```html
 <p-radio-group v-model="radio2">
-  <p-radio label="100" :disabled="true"></p-radio>
-  <p-radio label="50" :disabled="true"></p-radio>
-  <p-radio label="1" :disabled="true"></p-radio>
+  <p-radio label="100" val="100" :disabled="true"></p-radio>
+  <p-radio label="50" val="50" :disabled="true"></p-radio>
+  <p-radio label="1" val="1" :disabled="true"></p-radio>
 </p-radio-group>
 ```
 :::

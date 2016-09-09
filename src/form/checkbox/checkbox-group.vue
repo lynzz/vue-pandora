@@ -1,48 +1,23 @@
 <template>
   <div class="checkbox-group">
-    <checkbox
-      v-for="option in options"
-      :disabled="option.disabled"
-      :checked="option.checked"
-      :on-change="handleChange"
-      v-ref:checkbox
-      :value="option.value">
-      {{option.label}}
-    </checkbox>
+    <slot></slot>
   </div>
 </template>
 
 <script>
-  import Checkbox from './checkbox'
+  import emitter from 'src/mixins/emitter'
   export default {
+    name: 'pCheckboxGroup',
+    componentName: 'checkbox-group',
+    mixins: [emitter],
     props: {
-      options: {
-        type: Array
-      },
-      onChange: {
-        type: Function,
-        default: () => {}
-      }
+      value: [String, Number]
     },
-    methods: {
-      handleChange (e) {
-        const ret = this.$refs.checkbox.filter(item => {
-          return item.checked && !item.disabled
-        }).map(item => item.value)
-        this.onChange(ret)
+    watch: {
+      value (newValue) {
+        this.$emit('change', newValue)
+        this.dispatch('form-item', 'form.change', [newValue])
       }
-    },
-    components: {
-      Checkbox
     }
   }
 </script>
-<style scoped>
-  .checkbox-group .checkbox{
-    display: inline-block;
-    margin-left: 8px;
-  }
-  .checkbox-group .checkbox:first-child {
-    margin-left: 0
-  }
-</style>
