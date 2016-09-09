@@ -26,6 +26,9 @@
   &.is-inline
     display: inline
     width: auto
+  &-prepend
+    @extend .input
+    color: rgba($control, 0.6)
 
 .textarea
   @extend .input
@@ -143,6 +146,7 @@
     justify-content: flex-start
     .button,
     .input,
+    .input-prepend,
     .select
       border-radius: 0
       margin-right: -1px

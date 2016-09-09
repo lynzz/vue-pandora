@@ -44,18 +44,8 @@ a {
   background-color: #f9fafc;
   margin-bottom: 25px;
 }
-
-.main-cnt {
-  margin-top: -80px;
-  padding: 80px 0 120px;
-  box-sizing: border-box;
-  min-height: 100%;
-}
-
-.container,
-.page-container {
-  width: 960px;
-  margin: 0 auto;
+.main-wrapper {
+  background: #f9f9f9
 }
 
 .main-container {

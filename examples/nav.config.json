@@ -5,6 +5,12 @@
       "groupName": "Basic",
       "list": [
         {
+          "path": "/icon",
+          "name": "icon",
+          "title": "图标",
+          "description": ""
+        },
+        {
           "path": "/button",
           "name": "button",
           "title": "按钮",
@@ -32,6 +38,12 @@
           "name": "checkbox",
           "title": "多选框",
           "description": "用于在多个可选项中进行多项选择。"
+        },
+        {
+          "path": "/input",
+          "name": "input",
+          "title": "输入框",
+          "description": ""
         },
         {
           "path": "/form",
