@@ -12,14 +12,10 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
-  "dependencies": {
-    "async-validator": "^1.6.3",
-    "babel-runtime": "^6.0.0",
-    "vue": "^2.0.0-beta.5",
-    "vue-router": "^2.0.0-beta.2"
-  },
   "devDependencies": {
+    "async-validator": "^1.6.3",
     "babel-core": "^6.0.0",
+    "babel-runtime": "^6.0.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.0",
     "babel-loader": "^6.0.0",
     "babel-plugin-syntax-jsx": "^6.8.0",
@@ -75,9 +71,12 @@
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "url-loader": "^0.5.7",
+    "vue": "2.0.0-rc.3",
+    "vue-template-compiler": "2.0.0-rc.3",
+    "vue-router": "^2.0.0-beta.2",
     "vue-hot-reload-api": "^1.2.0",
     "vue-html-loader": "^1.0.0",
-    "vue-loader": "^9.2.2",
+    "vue-loader": "^9.3.2",
     "vue-markdown-loader": "^0.4.0",
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.12.2",

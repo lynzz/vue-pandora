@@ -4,7 +4,7 @@
       <span
         class="radio-inner"
         :class="{
-          'is-checked': _value === val,
+          'is-checked': currentValue === checkedValue,
           'is-focus': focus,
           'is-disabled': disabled
         }">
@@ -12,9 +12,9 @@
       <input
         type="radio"
         class="radio-original"
-        :value="val"
-        v-model="_value"
+        :value="checkedValue"
         :disabled="disabled"
+        v-model="currentValue"
         @focus="focus = true"
         @blur="focus = false"
       >
@@ -28,9 +28,11 @@
 
 <script>
   export default {
+    name: 'pRadio',
+    componentName: 'radio',
     props: {
       value: [String, Number],
-      val: {
+      checkedValue: {
         type: [String, Number],
         required: true
       },
@@ -45,9 +47,8 @@
         focus: false
       }
     },
-
     computed: {
-      _value: {
+      currentValue: {
         get () {
           return this.value !== undefined ? this.value : this.$parent.value
         },

@@ -10,7 +10,6 @@ import Col from './basic/col'
 import Checkbox from './form/checkbox/checkbox'
 import Form from './form/form'
 import FormItem from './form/form-item'
-import Field from './form/field'
 import Input from './form/input'
 import CheckboxGroup from './form/checkbox/checkbox-group'
 import Radio from './form/radio/radio'
@@ -26,7 +25,6 @@ export var Components = {
   Col,
   Form,
   FormItem,
-  Field,
   Checkbox,
   Input,
   CheckboxGroup,

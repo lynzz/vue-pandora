@@ -11,6 +11,7 @@
         :minlength="minlength"
         :maxlength="maxlength"
         v-model="currentValue"
+        @blur="handleBlur"
         :autocomplete="autoComplete"
         :placeholder="placeholder">
       <p-icon v-if="icon" :type="icon"></p-icon>
@@ -20,6 +21,7 @@
       v-else
       class="textarea"
       v-model="currentValue"
+      @blur="handleBlur"
       :disabled="disabled"
       :class="[inputCls]"
       :readonly="readonly"
@@ -29,9 +31,11 @@
 </template>
 
 <script>
+  import emitter from 'src/mixins/emitter'
   export default {
     name: 'pInput',
     componentName: 'input',
+    mixins: [emitter],
     props: {
       type: {
         type: String,
@@ -86,11 +90,15 @@
         }
         if (this.icon) {
           cls.push('has-icon')
+          if (this.iconRight) {
+            cls.push('has-icon-right')
+          }
         }
-        if (this.iconRight) {
-          cls.push('has-icon-right')
-        }
+
         return cls.join(' ')
+      },
+      error () {
+        return this.$parent.error
       },
       inputCls () {
         let cls = []
@@ -103,8 +111,17 @@
         if (this.expanded && this.icon) {
           cls.push('is-expanded')
         }
+        if (this.error) {
+          cls.push('is-danger')
+        }
 
         return cls.join(' ')
+      }
+    },
+    methods: {
+      handleBlur () {
+        this.$emit('onblur', this.currentValue)
+        this.dispatch('form-item', 'p.form.blur', [this.currentValue])
       }
     },
     watch: {
@@ -115,10 +132,10 @@
         }
       },
 
-      currentValue (val) {
-        this.$emit('input', val)
-        this.$emit('onchange', val)
-        this.dispatch('form-item', 'p.form.change', [val])
+      currentValue (newVal) {
+        // this.$emit('input', newVal)
+        // this.$emit('onchange', newVal)
+        this.dispatch('form-item', 'p.form.change', [newVal])
       }
     }
   }

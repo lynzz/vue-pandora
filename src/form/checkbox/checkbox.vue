@@ -11,23 +11,12 @@
         </span>
       <input
         class="checkbox-original"
-        v-if="trueValue || falseValue"
         type="checkbox"
         :disabled="disabled"
-        :true-value="trueValue"
-        :false-value="falseValue"
-        v-model="_value"
-        @focus="focus = true"
-        @blur="focus = false">
-      <input
-        v-else
-        class="checkbox-original"
-        type="checkbox"
-        :disabled="disabled"
-        v-model="_value"
+        v-model="currentValue"
         @focus="focus = true"
         @blur="focus = false"
-        :value="val">
+        :value="checkedValue">
     </span>
     <span class="checkbox-label">
       <slot></slot>
@@ -44,21 +33,17 @@
     componentName: 'checkbox',
     mixins: [emitter],
     props: {
-      value: {},
+      value: [Array, Boolean, Number],
       label: {
         type: String
       },
-      val: String,
-      indeterminate: Boolean,
-      disabled: Boolean,
-      trueValue: [String, Number],
-      falseValue: [String, Number]
+      checkedValue: String,
+      disabled: Boolean
     },
 
     computed: {
-      _value: {
+      currentValue: {
         get () {
-          console.log(this.value)
           return this.value !== undefined ? this.value : this.$parent.value
         },
         set (newValue) {
@@ -70,14 +55,12 @@
         }
       },
       checked () {
-        let type = Object.prototype.toString.call(this._value)
-        console.log(this._value, type)
+        var type = Object.prototype.toString.call(this.currentValue)
+
         if (type === '[object Boolean]') {
-          return this._value
+          return this.currentValue
         } else if (type === '[object Array]') {
-          return this._value.indexOf(this.val) > -1
-        } else if (type === '[object String]' || type === '[object Number]') {
-          return this._value === this.trueValue
+          return this.currentValue.indexOf(this.checkedValue) > -1
         }
       }
     },
@@ -89,8 +72,8 @@
     },
 
     watch: {
-      checked (sure) {
-        this.$emit('change', sure)
+      checked (val) {
+        this.$emit('change', val)
       }
     }
   }

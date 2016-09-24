@@ -1,19 +1,69 @@
 <template>
-  <form>
+  <form :class="{'form-inline': inline}">
     <slot></slot>
   </form>
 </template>
 
 <script>
-  import Schema from 'async-validator'
   export default {
+    name: 'pForm',
+    componentName: 'form',
     props: {
-      schema: {}
+      labelWidth: String,
+      model: {},
+      rules: {},
+      inline: {
+        type: Boolean,
+        default: false
+      }
     },
+    data () {
+      return {
+        fileds: {},
+        fieldLength: 0
+      }
+    },
+    created () {
+      this.$on('p.form.addField', (field) => {
+        console.log('field:', field)
+        this.fields[field.prop] = field
+        this.fieldLength++
+      })
+      this.$on('p.form.removeField', (field) => {
+        delete this.fields[field.prop]
+        this.fieldLength--
+      })
+    },
+    methods: {
+      resetFields () {
+        for (let prop in this.fields) {
+          let field = this.fields[prop]
+          field.resetField()
+        }
+      },
+      validate (callback) {
+        var count = 0
+        var valid = true
 
-    ready () {
-      /*eslint new-cap:0 */
-      this.validator = new Schema(this.schema)
+        for (let prop in this.fields) {
+          let field = this.fields[prop]
+          field.validate('', errors => {
+            if (errors) {
+              valid = false
+            }
+
+            if (++count === this.fieldLength) {
+              callback(valid)
+            }
+          })
+        }
+      },
+      validateField (prop, cb) {
+        var field = this.fields[prop]
+        if (!field) { throw new Error('must call validateField with valid prop string!') }
+
+        field.validate('', cb)
+      }
     }
   }
 </script>

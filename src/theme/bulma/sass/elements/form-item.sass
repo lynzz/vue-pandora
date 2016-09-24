@@ -1,0 +1,34 @@
+.form
+  &-item
+    margin-bottom: 24px
+    &-label
+      width: 80px
+      float: left
+      text-align: right
+      vertical-align: middle
+      padding: 9px 12px 9px 0
+      box-sizing: border-box
+      line-height: 1
+
+      &::after
+        content: ":"
+        margin: 0 8px 0 2px
+        position: relative
+        top: -0.5px
+      &.is-required:before
+        display: inline-block
+        margin-right: 4px
+        content: "*"
+        font-family: SimSun
+        font-size: 12px
+        color: $red
+    &-control
+      margin-left: 80px
+      .radio-group,
+      .checkbox-group
+        padding-top: 9px
+  &-inline
+    .form-item
+      display: inline-block
+    .form-item-control
+      margin-left: 0

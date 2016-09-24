@@ -1,5 +1,5 @@
 <template>
-  <div class="checkbox-group">
+  <div class="checkbox-group" type="checkbox">
     <slot></slot>
   </div>
 </template>
@@ -11,12 +11,12 @@
     componentName: 'checkbox-group',
     mixins: [emitter],
     props: {
-      value: [String, Number]
+      value: null
     },
     watch: {
       value (newValue) {
         this.$emit('change', newValue)
-        this.dispatch('form-item', 'form.change', [newValue])
+        this.dispatch('form-item', 'p.form.change', [newValue])
       }
     }
   }
