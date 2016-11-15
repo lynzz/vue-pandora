@@ -1,7 +1,7 @@
 <template>
   <aside class="aside-container">
     <ul>
-      <li><h4>Pandora</h4></li>
+      <li><h4>Pandora UI</h4></li>
       <li>
         <h4>{{guideData.name}}</h4>
         <ul>

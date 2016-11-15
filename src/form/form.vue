@@ -19,13 +19,12 @@
     },
     data () {
       return {
-        fileds: {},
+        fields: {},
         fieldLength: 0
       }
     },
     created () {
       this.$on('p.form.addField', (field) => {
-        console.log('field:', field)
         this.fields[field.prop] = field
         this.fieldLength++
       })

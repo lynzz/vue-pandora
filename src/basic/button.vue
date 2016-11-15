@@ -1,5 +1,5 @@
 <template>
-  <button :type="htmlType" class="button" :class="[btnClasses]">
+  <button :type="htmlType" class="button" :class="[btnClasses]" @click="handleClick">
     <p-icon v-if="hasIcon" :type="iconCls"></p-icon>
     <slot></slot>
   </button>
@@ -73,7 +73,13 @@
       }
     },
 
-    ready () {
+    methods: {
+      handleClick (e) {
+        this.$emit('click', e)
+      }
+    },
+
+    mounted () {
       if (this.$parent.$isButtonGroup) {
         if (!this.value) {
           this.value = this.$el.textContent.trim()

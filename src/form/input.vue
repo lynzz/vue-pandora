@@ -133,8 +133,8 @@
       },
 
       currentValue (newVal) {
-        // this.$emit('input', newVal)
-        // this.$emit('onchange', newVal)
+        this.$emit('input', newVal)
+        this.$emit('onchange', newVal)
         this.dispatch('form-item', 'p.form.change', [newVal])
       }
     }

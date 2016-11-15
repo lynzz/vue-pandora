@@ -27,7 +27,8 @@
       label: String,
       prop: String,
       required: Boolean,
-      labelWidth: String
+      labelWidth: String,
+      rules: [Object, Array]
     },
     data () {
       return {
@@ -101,9 +102,10 @@
         })
       },
       getRules () {
-        if (!this.prop) return []
-        let rules = this.rules || (this.form.rules ? this.form.rules[this.prop] : [])
-        return Array.isArray(rules) ? rules : [rules]
+        let formRules = this.prop ? this.form.rules[this.prop] : []
+        let selfRules = this.rules
+
+        return [].concat(selfRules || formRules || [])
       },
       getFilteredRule (trigger) {
         let rules = this.getRules()
@@ -122,12 +124,9 @@
         if (Array.isArray(value) && value.length > 0) {
           this.validateDisabled = true
           model[this.prop] = []
-        } else if (typeof value === 'string' && value !== '') {
+        } else if (value) {
           this.validateDisabled = true
-          model[this.prop] = ''
-        } else if (typeof value === 'number') {
-          this.validateDisabled = true
-          model[this.prop] = 0
+          model[this.prop] = this.initialValue
         }
       },
       onFieldBlur () {
@@ -140,24 +139,36 @@
         }
 
         this.validate('change')
+      },
+      getInitialValue () {
+        var value = this.form.model[this.prop]
+        if (value === undefined) {
+          return value
+        } else {
+          return JSON.parse(JSON.stringify(value))
+        }
       }
     },
     mounted () {
-      let rules = this.getRules()
-
-      rules.every(rule => {
-        if (rule.required) {
-          this.isRequired = true
-          return false
-        }
-      })
-
       if (this.prop) {
         this.dispatch('form', 'p.form.addField', [this])
-      }
 
-      this.$on('p.form.blur', this.onFieldBlur)
-      this.$on('p.form.change', this.onFieldChange)
+        this.initialValue = this.getInitialValue()
+
+        let rules = this.getRules()
+
+        if (rules.length) {
+          rules.every(rule => {
+            if (rule.required) {
+              this.isRequired = true
+              return false
+            }
+          })
+
+          this.$on('p.form.blur', this.onFieldBlur)
+          this.$on('p.form.change', this.onFieldChange)
+        }
+      }
     },
     beforeDestroy () {
       this.dispatch('form', 'p.form.removeField', [this])

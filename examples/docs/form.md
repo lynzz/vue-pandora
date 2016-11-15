@@ -9,16 +9,19 @@
           like: []
         },
         userForm: {
-          username: '',
+          username: 'lynzz',
           pwd: '',
           sex: '',
           like: []
         },
         userRules: {
-          username: {required: true, min: 5, message: '用户名至少 5 个字符'},
-          pwd: {required: true},
-          sex: {required: true},
-          like: {required: true, type: 'array'}
+          username: [
+            {required: true, message: '请填写用户名', trigger: 'blur'},
+            {min: 5, message: '用户名至少 5 个字符', trigger: 'blur'}
+          ],
+          pwd: [{required: true, message: '请填写密码'}],
+          sex: {required: true, message: '请选择性别', trigger: 'change'},
+          like: {required: true, type: 'array', message: '请选择爱好', trigger: 'change'}
         }
       }
     },
@@ -119,7 +122,7 @@
     </p-checkbox-group>
   </p-form-item>
   <p-form-item>
-    <p-button type="primary" @submit.prevent="handleSubmit">提交</p-button>
+    <p-button type="primary" @click.prevent="handleSubmit">提交</p-button>
     <p-button @click="handleReset">重置</p-button>
   </p-form-item>
 </p-form>
