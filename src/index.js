@@ -15,8 +15,11 @@ import Input from './form/input'
 import CheckboxGroup from './form/checkbox/checkbox-group'
 import Radio from './form/radio/radio'
 import RadioGroup from './form/radio/radio-group'
+import Select from './form/select/select'
 
-import Notice from './view/notification'
+import Tag from './data/tag/tag'
+
+import Notice from './notice/notification'
 
 export var Components = {
   Button,
@@ -31,27 +34,12 @@ export var Components = {
   CheckboxGroup,
   Radio,
   RadioGroup,
+  Tag,
+  Select,
   Notice
 }
 
-const initComponents = (Vue, prefix, components) => {
-  if (arguments.length < 3) { // eslint-disable-line no-undef
-    components = prefix
-    prefix = 'p'
-  } else {
-    if (!prefix) {
-      prefix = 'p'
-    }
-  }
-
-  if (!components) components = Object.keys(Components)
-
-  if (components instanceof Array) {
-    for (var i = 0, j = components.length; i < j; i++) {
-      var key = components[i]
-      Vue.component(prefix + key, Components[key])
-    }
-  }
-}
-
-initComponents(Vue)
+Object.keys(Components).forEach(key => {
+  const Component = Components[key]
+  Vue.component(Component.name, Component)
+})
