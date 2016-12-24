@@ -1,16 +1,19 @@
 <template>
-  <div class="form-item">
-    <label
-      class="form-item-label"
-      :style="labelStyle"
-      :class="{'is-required': required || isRequired}"
-      v-if="label">
-      {{label}}
-    </label>
-    <div class="form-item-control" :style="controlStyle">
+  <div class="ant-form ant-form-item">
+    <div
+      class="ant-form-item-label"
+      v-if="label"
+      :class="[labelCls]"
+      :style="labelStyle">
+      <label
+        :class="{'ant-form-item-required': required || isRequired}">
+        {{label}}
+      </label>
+    </div>
+    <div class="ant-form-item-control" :style="controlStyle" :class="[controlCls]">
       <slot></slot>
       <transition>
-        <div class="help is-danger" v-if="error">{{error}}</div>
+        <div class="ant-form-explain" v-if="error">{{error}}</div>
       </transition>
     </div>
   </div>
@@ -25,9 +28,15 @@
     mixins: [emitter],
     props: {
       label: String,
+      labelCol: Object,
+      wrapperCol: Object,
       prop: String,
       required: Boolean,
       labelWidth: String,
+      feedback: {
+        type: Boolean,
+        default: false
+      },
       rules: [Object, Array]
     },
     data () {
@@ -65,6 +74,46 @@
           style.marginLeft = labelWidth
         }
         return style
+      },
+      labelCls () {
+        let cls = []
+        const labelCol = this.labelCol
+        if (labelCol) {
+          const {span, offset} = labelCol
+          if (span) {
+            cls.push(`ant-col-${span}`)
+          }
+          if (offset) {
+            cls.push(`ant-col-offset-${offset}`)
+          }
+        }
+
+        return cls.join(' ')
+      },
+      controlCls () {
+        let cls = []
+        const wrapperCol = this.wrapperCol
+        if (wrapperCol) {
+          const {span, offset} = wrapperCol
+          if (span) {
+            cls.push(`ant-col-${span}`)
+          }
+          if (offset) {
+            cls.push(`ant-col-offset-${offset}`)
+          }
+        }
+
+        if (this.error) {
+          cls.push('has-error')
+        } else {
+          cls.push('has-success')
+        }
+
+        if (this.feedback) {
+          cls.push('has-feedback')
+        }
+
+        return cls.join(' ')
       },
       fieldValue: {
         cache: false,

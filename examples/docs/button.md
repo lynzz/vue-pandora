@@ -23,50 +23,38 @@
 
 基础的按钮用法。
 
-:::demo Button 组件有5种常用主题，由`type`属性来定义，默认为`default`。
+:::demo 按钮有四种类型：主按钮、次按钮、幽灵按钮、虚线按钮。通过设置 `type` 为 `primary` `ghost` `dashed`可分别创建主按钮、幽灵按钮、虚线按钮，若不设置 `type` 值则为次按钮。不同的样式可以用来区别其重要程度。主按钮和次按钮可独立使用，幽灵按钮用于和主按钮组合。需要强引导用主按钮，切记主按钮在同一个操作区域最多出现一次。
 
 ```html
-<p class="control">
-  <p-button>default</p-button>
-  <p-button type="white">white</p-button>
-  <p-button type="light">light</p-button>
-  <p-button type="dark">dark</p-button>
-  <p-button type="black">black</p-button>
-  <p-button type="link">link</p-button>
-</p>
-<p class="control">
-  <p-button type="primary">primary</p-button>
-  <p-button type="danger">danger</p-button>
-  <p-button type="info">info</p-button>
-  <p-button type="success">success</p-button>
-  <p-button type="warning">warning</p-button>
-</p>
+<p-button>default</p-button>
+<p-button type="primary">primary</p-button>
+<p-button type="ghost">ghost</p-button>
+<p-button type="dashed">dashed</p-button>
+
 ```
 :::
 
 ### sharp 形状
 
-可设置 outlined 或 inverted"
+可设置 `circle`
 
 :::demo
 
 ```html
-<p-button type="primary" shape="outlined">outlined</p-button>
-<p-button type="primary" shape="inverted">inverted</p-button>
+<p-button type="primary" shape="circle" icon="search"></p-button>
 ```
 :::
 
 ### 不同大小
 
-按钮的大小，由属性 size 定义，值有 `small`, `medium`,`large`, 默认是 `normal`
+按钮的大小，由属性 size 定义，值有 `small`, `normal`,`large`, 默认是 `normal`
 
 :::demo
 
 ```html
-<p-button size="small">small</p-button>
+<p-button size="sm">small</p-button>
 <p-button>normal</p-button>
-<p-button size="medium">medium</p-button>
-<p-button size="large">large</p-button>
+<p-button size="lg">large</p-button>
 ```
 :::
 
@@ -86,15 +74,13 @@
 
 ### 带有图标的按钮
 
-图标用[Font Awesome](http://fortawesome.github.io/Font-Awesome/)
-
 :::demo
 
 ```html
 <p-button icon="user">用户</p-button>
 <p-button icon="lock" type="primary">锁定</p-button>
-<p-button icon="lock" type="primary" size="large">变大</p-button>
-<p-button icon="lock" type="primary" size="small">变小</p-button>
+<p-button icon="lock" type="primary" size="lg">变大</p-button>
+<p-button icon="lock" type="primary" size="sm">变小</p-button>
 ```
 :::
 
@@ -109,9 +95,9 @@
 ### 属性
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| size     | 尺寸   | string  |   large,medium,small            |    normal     |
-| type     | 类型   | string    |   primary,success,warning,danger,info,white,link,dark,black |     —    |
-| sharp     | 按钮形状   | string    | outlined,inverted | —   |
+| size     | 尺寸   | string  |   lg,sm            |    normal     |
+| type     | 类型   | string    |   primary,default,ghost,dashed |     —    |
+| sharp     | 按钮形状   | string    | circle | —   |
 | disabled  | 禁用    | boolean   | true, false   | false   |
 | icon  | 图标，已有的图标库中的图标名 | string   |  —  |  —  |
 | loading | 加载状态的按钮 | true,false | — | — |

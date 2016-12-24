@@ -128,3 +128,29 @@
 </p-form>
 ```
 :::
+
+### Form Attributes
+
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| model   | 表单数据对象 | object      |                  —                |  — |
+| rules    | 表单验证规则 | object | — | — |
+| inline    | 行内表单模式 | boolean | — | false |
+| label-width | 表单域标签的宽度，所有的 form-item 都会继承 form 组件的 labelWidth 的值 | string | — | — |
+
+### Form Methods
+
+| 方法名      | 说明          |
+|---------- |-------------- |
+| validate(cb) | 对整个表单进行校验的方法 |
+| validateField(prop, cb) | 对部分表单字段进行校验的方法 |
+| resetFields | 对整个表单进行重置，将所有字段值重置为空并移除校验结果 |
+
+### Form-Item Attributes
+
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| prop    | 表单域 model 字段 | string    | 传入 Form 组件的 `model` 中的字段 | — |
+| label | 标签文本 | string | — | — |
+| label-width | 表单域标签的的宽度，例如 '50px' | string |       —       | — |
+| required | 是否必填，如不设置，则会根据校验规则自动生成 | bolean | — | false |

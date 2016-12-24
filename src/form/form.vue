@@ -1,5 +1,11 @@
 <template>
-  <form :class="{'form-inline': inline}">
+  <form
+    class="ant-form"
+    :class="{
+      'ant-form-inline': inline,
+      'ant-form-horizontal': horizontal,
+      'ant-form-vertical': vertical
+    }">
     <slot></slot>
   </form>
 </template>
@@ -13,6 +19,14 @@
       model: {},
       rules: {},
       inline: {
+        type: Boolean,
+        default: false
+      },
+      horizontal: {
+        type: Boolean,
+        default: false
+      },
+      vertical: {
         type: Boolean,
         default: false
       }

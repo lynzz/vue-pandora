@@ -14,7 +14,7 @@
     name: 'app'
   }
 </script>
-<style lang="sass">
+<style lang="less">
 
 @import '../node_modules/highlight.js/styles/color-brewer.css';
 
@@ -222,6 +222,28 @@ ul, li {
 
 .xRightMatrix {
   animation: xRightMatrix .5s ease-out;
+}
+
+.table {
+  font-size: 13px;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  empty-cells: show;
+  border: 1px solid #e9e9e9;
+  width: 100%;
+  margin: 16px 0;
+
+  th {
+    background: #F7F7F7;
+    white-space: nowrap;
+    color: #5C6B77;
+    font-weight: 600;
+  }
+  th, td {
+    border: 1px solid #e9e9e9;
+    padding: 8px 16px;
+    text-align: left;
+  }
 }
 
 @keyframes xRightMatrix {

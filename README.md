@@ -1,6 +1,6 @@
 # vue-pandora
 
-> vue pandora ui, base on [bulma](http://bulma.io), **still in development**
+> vue pandora ui, base on [ant-design](http://ant.design), **still in development**
 
 ## Build Setup
 

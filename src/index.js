@@ -1,25 +1,31 @@
 import Vue from 'vue'
 
-import 'src/theme/bulma/bulma.sass'
+import 'src/style/index.less'
 
-import Button from './basic/button'
-import ButtonGroup from './basic/button-group'
-import Icon from './basic/icon'
-import Row from './basic/row'
-import Col from './basic/col'
+import Button from './button/button'
+import ButtonGroup from './button/button-group'
 
-import Checkbox from './form/checkbox/checkbox'
+import Icon from './icon/icon'
+
+import Row from './grid/row'
+import Col from './grid/col'
+
+import Checkbox from './checkbox/checkbox'
+import CheckboxGroup from './checkbox/checkbox-group'
+
 import Form from './form/form'
 import FormItem from './form/form-item'
-import Input from './form/input'
-import CheckboxGroup from './form/checkbox/checkbox-group'
-import Radio from './form/radio/radio'
-import RadioGroup from './form/radio/radio-group'
-import Select from './form/select/select'
 
-import Tag from './data/tag/tag'
+import Input from './input/input'
 
-import Notice from './notice/notification'
+import Radio from './radio/radio'
+import RadioGroup from './radio/radio-group'
+
+import Select from './select/select'
+
+import Tag from './tag/tag'
+
+import Notification from './notice/notification'
 
 export var Components = {
   Button,
@@ -36,7 +42,7 @@ export var Components = {
   RadioGroup,
   Tag,
   Select,
-  Notice
+  Notification
 }
 
 Object.keys(Components).forEach(key => {

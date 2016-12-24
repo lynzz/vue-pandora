@@ -46,10 +46,26 @@
           "description": ""
         },
         {
+          "path": "/select",
+          "name": "select",
+          "title": "选择框",
+          "description": "选择框"
+        },
+        {
           "path": "/form",
           "name": "form",
           "title": "表单",
           "description": "一个多功能的并带有字段验证的表单组件"
+        }
+      ]
+    }, {
+      "groupName": "Data",
+      "list": [
+        {
+          "path": "/tag",
+          "name": "tag",
+          "title": "标签",
+          "description": "标签。"
         }
       ]
     }]

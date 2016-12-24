@@ -12,12 +12,29 @@
   </div>
 </template>
 
-<style lang="sass">
+<style lang="less">
   .demo-block {
     border: solid 1px #eaeefb;
     border-radius: 4px;
     transition: .2s;
 
+    .ant-row > div {
+      text-align: center;
+      min-height: 30px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      color: #fff;
+      padding: 16px 0;
+    }
+
+    .ant-row > div:not(.gutter-row):nth-child(2n+1),
+    .ant-row-flex >div:not(.gutter-row):nth-child(2n+1){
+      background: rgba(0, 160, 233, 0.7);
+    }
+    .ant-row > div:not(.gutter-row),
+    .ant-row-flex >div:not(.gutter-row){
+      background: #00A0E9
+    }
     &.hover {
       box-shadow: 0 6px 18px 0 rgba(232, 237, 250, .5);
     }
