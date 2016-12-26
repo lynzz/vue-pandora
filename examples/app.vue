@@ -10,6 +10,7 @@
 </template>
 
 <script>
+  import '../src/style/index.less'
   export default {
     name: 'app'
   }

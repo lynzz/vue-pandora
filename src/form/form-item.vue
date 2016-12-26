@@ -21,7 +21,7 @@
 
 <script>
   import AsyncValidator from 'async-validator'
-  import emitter from 'src/mixins/emitter'
+  import emitter from '../mixins/emitter'
   export default {
     name: 'pFormItem',
     componentName: 'form-item',

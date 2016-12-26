@@ -87,8 +87,3 @@
     }
   }
 </script>
-<style media="screen">
-  .button .fa {
-    margin-right: 4px;
-  }
-</style>

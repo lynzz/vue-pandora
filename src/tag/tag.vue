@@ -1,8 +1,10 @@
 <template>
   <transition :name="closeTransition ? '' : 'md-fade-center'">
-    <span class="tag" :class="[tagClass]">
-      <slot></slot>
-      <button class="delete is-small" v-if="closable" @click="handleClose"></button>
+    <span class="ant-tag" :class="[tagClass]" :style="tagStyle">
+      <span class="ant-tag-text">
+        <slot></slot>
+      </span>
+      <p-icon type="cross" v-if="closable" @click.native="handleClose"></p-icon>
     </span>
   </transition>
 </template>
@@ -11,11 +13,10 @@
   export default {
     name: 'pTag',
     props: {
-      type: {
+      color: {
         type: String,
         default: ''
       },
-      size: String,
       closeTransition: {
         type: Boolean,
         default: false
@@ -26,15 +27,18 @@
       tagClass () {
         let cls = []
 
-        if (this.type) {
-          cls.push(`is-${this.type}`)
-        }
-
-        if (this.size) {
-          cls.push(`is-${this.size}`)
+        if (this.color) {
+          cls.push('ant-tag-has-color')
+          cls.push(`ant-tag-${this.color}`)
         }
 
         return cls.join(' ')
+      },
+      tagStyle () {
+        if (this.color && /^#\w+/.test(this.color)) {
+          return `background-color: ${this.color}`
+        }
+        return ''
       }
     },
     methods: {

@@ -59,7 +59,7 @@
         }
       ]
     }, {
-      "groupName": "Data",
+      "groupName": "Data Display",
       "list": [
         {
           "path": "/tag",

@@ -3,10 +3,10 @@ module.exports = {
   data() {
     return {
       tags: [
-        {key: 1, name: '成功', type: 'success'},
-        {key: 2, name: '信息', type: 'info'},
-        {key: 3, name: '失败', type: 'danger'},
-        {key: 4, name: '警告', type: 'warning'}
+        {key: 1, name: '绿色', color: 'green'},
+        {key: 2, name: '蓝色', color: 'blue'},
+        {key: 3, name: '红色', color: 'red'},
+        {key: 4, name: '黄色', color: 'yellow'}
       ]
     };
   },
@@ -26,12 +26,11 @@ module.exports = {
 
 ```html
 <p-tag>default</p-tag>
-<p-tag type="primary">primary</p-tag>
-<p-tag type="info">info</p-tag>
-<p-tag type="success">success</p-tag>
-<p-tag type="warning">warning</p-tag>
-<p-tag type="danger">danger</p-tag>
-<p-tag type="dark">dark</p-tag>
+<p-tag color="blue">blue</p-tag>
+<p-tag color="red">red</p-tag>
+<p-tag color="green">green</p-tag>
+<p-tag color="yellow">yellow</p-tag>
+<p-tag color="#108ee9">#108ee9</p-tag>
 ```
 :::
 
@@ -45,7 +44,7 @@ module.exports = {
 <p-tag
   v-for="(tag, index) in tags"
   :key="tag.key"
-  :type="tag.type"
+  :color="tag.color"
   @close="closeTag(index)"
   :closable="true">
   {{tag.name}}
@@ -55,10 +54,10 @@ module.exports = {
   data() {
     return {
       tags: [
-        {key: 1, name: '成功', type: 'success'},
-        {key: 2, name: '信息', type: 'info'},
-        {key: 3, name: '失败', type: 'danger'},
-        {key: 4, name: '警告', type: 'warning'}
+        {key: 1, name: '绿色', color: 'green'},
+        {key: 2, name: '蓝色', color: 'blue'},
+        {key: 3, name: '红色', color: 'red'},
+        {key: 4, name: '黄色', color: 'yellow'}
       ]
     };
   },
@@ -72,21 +71,11 @@ module.exports = {
 ```
 :::
 
-### 大中小标签
-
-:::demo
-
-```html
-<p-tag type="primary" size="large">Large</p-tag>
-<p-tag type="info" size="medium">Medium</p-tag>
-<p-tag type="success" size="small">Small</p-tag>
-```
-:::
 
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 主题 | string | 'primary', 'dark', 'success', 'warning', 'danger' | — |
+| color | 颜色 | string | 'blue', 'green', 'red', 'yellow' | — |
 | closable | 是否可关闭 | boolean | — | false |
 | close-transition | 是否禁用关闭时的渐变动画 | boolean | — | false |
 

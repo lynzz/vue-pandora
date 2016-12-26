@@ -6,9 +6,10 @@ import DemoBlock from './components/demo-block'
 import entry from './app'
 import routerConfig from './router-config'
 
-require('../src/index')
+import PandoraUI from '../src/index'
 
 Vue.use(VueRouter)
+Vue.use(PandoraUI)
 Vue.component('nav-view', navView)
 Vue.component('demo-block', DemoBlock)
 
